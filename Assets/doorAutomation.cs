@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class doorAutomation : MonoBehaviour
 {
+
+    public 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +15,11 @@ public class doorAutomation : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter(Collider other) {
+        GameObject parent = transform.parent.gameObject;       
+        Animation animation = parent.GetComponent<Animation>();       
+        animation.Play("OpenDoor");
     }
 }
