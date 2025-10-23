@@ -19,7 +19,7 @@ public class doorAutomation : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         GameObject parent = transform.parent.gameObject;       
-        Animation animation = parent.GetComponent<Animation>();       
+        Animation animation = parent.GetComponent<Animation>();
         animation.Play("OpenDoor");
     }
 }
