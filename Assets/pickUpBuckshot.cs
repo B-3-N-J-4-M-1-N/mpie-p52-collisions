@@ -4,6 +4,7 @@ public class pickUpBuckshot : MonoBehaviour
 {
 
     public int shellCount = 0;
+    public AudioClip reload;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,9 +34,9 @@ public class pickUpBuckshot : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.name == "AmmoBox") {
-            other.gameObject.SetActive(false);
-            AudioSource reload = other.GetComponent<AudioSource>();
+            AudioSource reload = GetComponent<AudioSource>();
             reload.Play();
+            other.gameObject.SetActive(false);
             shellCount += 20;
         }
     }
