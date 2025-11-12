@@ -15,6 +15,10 @@ public class pickUpBuckshot : MonoBehaviour
     {
         Ray ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f ,0.5f ,0.0f));
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            if (shellCount <= 0) {
+                AudioSource chamberEmpty = GetComponent<AudioSource>();
+                chamberEmpty.Play();
+            }
             if (shellCount > 0) {
                 RaycastHit result; 
                 Physics.Raycast(ray, out result);
@@ -30,6 +34,8 @@ public class pickUpBuckshot : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.name == "AmmoBox") {
             other.gameObject.SetActive(false);
+            AudioSource reload = other.GetComponent<AudioSource>();
+            reload.Play();
             shellCount += 20;
         }
     }
